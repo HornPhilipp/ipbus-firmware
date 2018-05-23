@@ -61,6 +61,8 @@ if [[ "$PROJ" == "sim" ]]; then
   ipbb sim -p ${PROJ} ipcores
   ipbb sim -p ${PROJ} fli
   ipbb sim -p ${PROJ} project
+  cd proj/sim
+  ./vsim -c work.top -do 'run 1ms' -do 'quit'
 else
   ipbb proj create vivado -t top_${PROJ}.dep ${PROJ} ipbus-firmware:projects/example
   ipbb vivado -p ${PROJ} project
